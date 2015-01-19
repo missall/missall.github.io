@@ -172,7 +172,7 @@
   
     <div class="article-meta">
       <a href="/2015/01/19/ubuntu-http-proxy/" class="article-date">
-  	<time datetime="2015-01-19T07:52:10.000Z" itemprop="datePublished">Jan 19 2015</time>
+  	<time datetime="2015-01-19T07:55:43.000Z" itemprop="datePublished">Jan 19 2015</time>
 </a>
       
       
@@ -198,12 +198,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="需求">需求</h1>
-<pre><code>在现网部署环境中经常遇到有些服务器只有内网地址无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下可以通过设置<span class="keyword">http</span>代理，通过有外网访问能力的服务器来安装软件包。
-</code></pre><h1 id="要求">要求</h1>
-<pre><code><span class="input"><span class="prompt">&gt; 1台可访问外网的服务器，我们称为A服务器
-&gt;</span> <span class="number">1</span>台只有内网地址的服务器，我们称为<span class="constant">B</span>服务器</span>
-&gt; 本文设置只针对通过<span class="constant">APT</span>方式安装
-</code></pre><h1 id="安装步骤">安装步骤</h1>
+<p>在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。</p>
+<h1 id="要求">要求</h1>
+<blockquote>
+<p>1台可访问外网的服务器，我们称为A服务器<br>1台只有内网地址的服务器，我们称为B服务器<br>本文设置只针对通过APT方式安装</p>
+</blockquote>
+<h1 id="安装步骤">安装步骤</h1>
 <h2 id="A服务器安装http代理服务器（tinyproxy）">A服务器安装http代理服务器（tinyproxy）</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">sudo</span> apt-get tinyproxy</div><div class="line">$ <span class="built_in">sudo</span> vi /etc/tinyproxy.conf</div><div class="line"> //找到Allow <span class="number">127.0</span>.<span class="number">0.1</span> ，将地址改为B服务器的网段如：<span class="number">10.0</span>.<span class="number">1.1</span>/<span class="number">24</span></div><div class="line">$ <span class="built_in">sudo</span> /etc/init.d/tinyproxy start</div></pre></td></tr></table></figure>
 
