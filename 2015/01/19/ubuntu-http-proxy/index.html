@@ -6,38 +6,38 @@
   <title>apt-get通过httpProxy跳板服务器安装软件包 | Joe&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="需求
-在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。
+在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给部署应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。
 要求
 
 1、1台可访问外网的服务器，我们称为A服务器2、1台只有内网地址的服务器，我们称为B服务器3、本文设置只针对通过APT方式安装
 
 安装步骤
 A服务器安装http代理服务器（tinyproxy）
-1234$">
+1234$ su">
 <meta property="og:type" content="article">
 <meta property="og:title" content="apt-get通过httpProxy跳板服务器安装软件包">
 <meta property="og:url" content="http://missall.github.io/2015/01/19/ubuntu-http-proxy/">
 <meta property="og:site_name" content="Joe's Blog">
 <meta property="og:description" content="需求
-在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。
+在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给部署应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。
 要求
 
 1、1台可访问外网的服务器，我们称为A服务器2、1台只有内网地址的服务器，我们称为B服务器3、本文设置只针对通过APT方式安装
 
 安装步骤
 A服务器安装http代理服务器（tinyproxy）
-1234$">
+1234$ su">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="apt-get通过httpProxy跳板服务器安装软件包">
 <meta name="twitter:description" content="需求
-在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。
+在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给部署应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。
 要求
 
 1、1台可访问外网的服务器，我们称为A服务器2、1台只有内网地址的服务器，我们称为B服务器3、本文设置只针对通过APT方式安装
 
 安装步骤
 A服务器安装http代理服务器（tinyproxy）
-1234$">
+1234$ su">
 
   
     <link rel="alternative" href="/atom.xml" title="Joe&#39;s Blog" type="application/atom+xml">
@@ -236,7 +236,7 @@ A服务器安装http代理服务器（tinyproxy）
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="需求">需求</h1>
-<p>在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。</p>
+<p>在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给部署应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。</p>
 <h1 id="要求">要求</h1>
 <blockquote>
 <p>1、1台可访问外网的服务器，我们称为A服务器<br>2、1台只有内网地址的服务器，我们称为B服务器<br>3、本文设置只针对通过APT方式安装</p>
@@ -246,7 +246,17 @@ A服务器安装http代理服务器（tinyproxy）
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">sudo</span> apt-get tinyproxy</div><div class="line">$ <span class="built_in">sudo</span> vi /etc/tinyproxy.conf</div><div class="line"> //找到Allow <span class="number">127.0</span>.<span class="number">0.1</span> ，将地址改为B服务器的网段如：<span class="number">10.0</span>.<span class="number">1.1</span>/<span class="number">24</span></div><div class="line">$ <span class="built_in">sudo</span> /etc/init.d/tinyproxy start</div></pre></td></tr></table></figure>
 
 <h2 id="B服务器设置http代理">B服务器设置http代理</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">export</span> http_proxy=<span class="string">"http://A_IP:8888"</span> //<span class="number">8888</span>为默认端口</div><div class="line">$ <span class="built_in">sudo</span> <span class="built_in">echo</span> <span class="string">'Acquire::http::proxy "http://A_IP:8888/";'</span> &gt; /etc/apt/apt.conf</div></pre></td></tr></table></figure>
+<h3 id="方法一:">方法一:</h3>
+<p>这是一种临时的手段，如果您仅仅是暂时需要通过 http 代理使用 apt-get，您可以使用这种方式。 在使用 apt-get 之前，在终端中输入以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">export</span> http_proxy= <span class="string">"http://yourproxyaddress:proxyport"</span></div></pre></td></tr></table></figure>
+
+<h3 id="方法二:">方法二:</h3>
+<p>这种方法要用到/etc/apt/文件夹下的 apt.conf 文件。如果您希望只有 apt-get(而不是其他应用程序)一直使用 http 代理，您可以使用这种方式。 注意：某些情况下，系统安装过程中没有建立 apt 配置文件。下面的 操作将视情况修改现有的配置文件或者新建配置文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">sudo</span> vi /etc/apt/apt.conf //打开了 apt.conf 配置文件</div><div class="line">在apt.conf 文件中加入下面这行： </div><div class="line">Acquire::http::Proxy “http://yourproxyaddress:proxyport”;</div><div class="line">保存 apt.conf 文件。</div></pre></td></tr></table></figure>
+
+<h3 id="方法三：">方法三：</h3>
+<p>这种方法会在您的主目录下的.bashrc 文件中添加两行。如果您希望 apt-get 和其他应用程序如 wget 等都使用 http 代理， 您可以使用这种方式。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ vi ~/.bashrc</div><div class="line">//打开了.bashrc 文件</div><div class="line">在.bashrc 文件末尾添加如下内容： (注意：替换成自己的代理地址和端口号) </div><div class="line">http_proxy=http://yourproxyaddress:proxyport <span class="keyword">export</span> http_proxy</div></pre></td></tr></table></figure>
 
 <h2 id="相关链接">相关链接</h2>
 <p><a href="https://banu.com/tinyproxy/" target="_blank" rel="external">tinyproxy</a><br><a href="http://baike.baidu.com/link?url=IUuqee_zI52gZBv8kXYYF4t0LLlaVdP7jw_xmJdV6EqV0aAoFty9tF1unYX2TerIkkU4dBkdio4RmaPSGW0vtq" target="_blank" rel="external">apt-get 百度百科</a></p>
