@@ -230,12 +230,21 @@
 
 <h3 id="方法二:">方法二:</h3>
 <p>这种方法要用到/etc/apt/文件夹下的 apt.conf 文件。如果您希望只有 apt-get(而不是其他应用程序)一直使用 http 代理，您可以使用这种方式。 注意：某些情况下，系统安装过程中没有建立 apt 配置文件。下面的 操作将视情况修改现有的配置文件或者新建配置文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">sudo</span> vi /etc/apt/apt.conf //打开了 apt.conf 配置文件</div><div class="line">在apt.conf 文件中加入下面这行： </div><div class="line">Acquire::http::Proxy “http://yourproxyaddress:proxyport”;</div><div class="line">保存 apt.conf 文件。</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">sudo</span> vi /etc/apt/apt.conf //打开apt.conf配置文件</div></pre></td></tr></table></figure>
 
+<p>在apt.conf 文件中加入下面这行： </p>
+<blockquote>
+<p>Acquire::http::Proxy “<a href="http://yourproxyaddress:proxyport”" target="_blank" rel="external">http://yourproxyaddress:proxyport”</a>;</p>
+</blockquote>
+<p>保存 apt.conf 文件。</p>
 <h3 id="方法三：">方法三：</h3>
 <p>这种方法会在您的主目录下的.bashrc 文件中添加两行。如果您希望 apt-get 和其他应用程序如 wget 等都使用 http 代理， 您可以使用这种方式。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ vi ~/.bashrc</div><div class="line">//打开了.bashrc 文件</div><div class="line">在.bashrc 文件末尾添加如下内容： (注意：替换成自己的代理地址和端口号) </div><div class="line">http_proxy=http://yourproxyaddress:proxyport <span class="keyword">export</span> http_proxy</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vi ~/.bashrc  //打开.bashrc 文件</div></pre></td></tr></table></figure>
 
+<p>在.bashrc 文件末尾添加如下内容： (注意：替换成自己的代理地址和端口号) </p>
+<blockquote>
+<p>http_proxy=<a href="http://yourproxyaddress:proxyport" target="_blank" rel="external">http://yourproxyaddress:proxyport</a> export http_proxy </p>
+</blockquote>
 <h2 id="相关链接">相关链接</h2>
 <p><a href="https://banu.com/tinyproxy/" target="_blank" rel="external">tinyproxy</a><br><a href="http://baike.baidu.com/link?url=IUuqee_zI52gZBv8kXYYF4t0LLlaVdP7jw_xmJdV6EqV0aAoFty9tF1unYX2TerIkkU4dBkdio4RmaPSGW0vtq" target="_blank" rel="external">apt-get 百度百科</a></p>
 
