@@ -108,7 +108,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud">
-						<a href="/tags/hahahah/" style="font-size: 10.00px;">hahahah</a><a href="/tags/生活、工作/" style="font-size: 20.00px;">生活、工作</a>
+						<a href="/tags/hahahah/" style="font-size: 10.00px;">hahahah</a><a href="/tags/ubuntu-httpProxy/" style="font-size: 20.00px;">ubuntu httpProxy</a><a href="/tags/生活、工作/" style="font-size: 10.00px;">生活、工作</a>
 					</div>
 				</section>
 				
@@ -168,15 +168,15 @@
 </nav>
       
   
-    <article id="post-新的开始-2015-1-8" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-ubuntu-http-proxy" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/01/08/新的开始-2015-1-8/" class="article-date">
-  	<time datetime="2015-01-08T07:40:48.000Z" itemprop="datePublished">Jan 8 2015</time>
+      <a href="/2015/01/19/ubuntu-http-proxy/" class="article-date">
+  	<time datetime="2015-01-19T03:28:45.000Z" itemprop="datePublished">Jan 19 2015</time>
 </a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活、工作/">生活、工作</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu-httpProxy/">ubuntu httpProxy</a></li></ul>
 
     </div>
   
@@ -189,7 +189,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/08/新的开始-2015-1-8/">新的开始</a>
+      <a class="article-title" href="/2015/01/19/ubuntu-http-proxy/">ubuntu服务器设置httpProxy</a>
     </h1>
   
 
@@ -197,7 +197,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://mmbiz.qpic.cn/mmbiz/Azaj46DgiaJyJLMrCGGYhTk02SQpiar9l16WyOQq6BPx47TONb13uyicmjQ4bXcWxMACfMWE1LYrIPvto5P7CEiaVA/0" alt="pei tu"><br>    2015年对于我来说是一个新的起点，</p>
+        <h1 id="需求">需求</h1>
+<pre><code>在现网部署环境中经常遇到有些服务器只有内网地址无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下可以通过设置<span class="keyword">http</span>代理，通过有外网访问能力的服务器来安装软件包。
+</code></pre><h1 id="要求">要求</h1>
+<pre><code><span class="input"><span class="prompt">&gt; 1台可访问外网的服务器，我们称为A服务器
+&gt;</span> <span class="number">1</span>台只有内网地址的服务器，我们称为<span class="constant">B</span>服务器</span>
+&gt; 本文设置只针对通过<span class="constant">APT</span>方式安装
+</code></pre><h1 id="安装步骤">安装步骤</h1>
+<h2 id="A服务器安装http代理服务器（tinyproxy）">A服务器安装http代理服务器（tinyproxy）</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">sudo</span> apt-get tinyproxy</div><div class="line">$ <span class="built_in">sudo</span> vi /etc/tinyproxy.conf</div><div class="line"> //找到Allow <span class="number">127.0</span>.<span class="number">0.1</span> ，将地址改为B服务器的网段如：<span class="number">10.0</span>.<span class="number">1.1</span>/<span class="number">24</span></div><div class="line">$ <span class="built_in">sudo</span> /etc/init.d/tinyproxy start</div></pre></td></tr></table></figure>
+
+<h2 id="B服务器设置http代理">B服务器设置http代理</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">export</span> http_proxy=<span class="string">"http://A_IP:8888"</span> //<span class="number">8888</span>为默认端口</div><div class="line">$ <span class="built_in">sudo</span> <span class="built_in">echo</span> <span class="string">'Acquire::http::proxy "http://A_IP:8888/";'</span> &gt; /etc/apt/apt.conf</div></pre></td></tr></table></figure>
+
 
       
     </div>

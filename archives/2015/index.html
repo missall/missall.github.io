@@ -3,20 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | Joe&#39;s Blog</title>
+  <title>Archives: 2015 | Joe&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in trobuleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://missall.github.io/2014/12/25/hello-world/">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Joe's Blog">
+<meta property="og:url" content="http://missall.github.io/archives/2015/">
 <meta property="og:site_name" content="Joe's Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in trobuleshooting or you can ask me on GitHub.
-Quick">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in trobuleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Joe's Blog">
+<meta name="twitter:description">
 
   
     <link rel="alternative" href="/atom.xml" title="Joe&#39;s Blog" type="application/atom+xml">
@@ -169,14 +166,18 @@ Quick">
 		</header>				
 	</div>
 </nav>
-      <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      
+  
+    <article id="post-ubuntu-http-proxy" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/12/25/hello-world/" class="article-date">
-  	<time datetime="2014-12-25T06:21:41.000Z" itemprop="datePublished">Dec 25 2014</time>
+      <a href="/2015/01/19/ubuntu-http-proxy/" class="article-date">
+  	<time datetime="2015-01-19T03:28:45.000Z" itemprop="datePublished">Jan 19 2015</time>
 </a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu-httpProxy/">ubuntu httpProxy</a></li></ul>
+
     </div>
   
   <div class="article-inner">
@@ -187,8 +188,8 @@ Quick">
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      Hello World
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/19/ubuntu-http-proxy/">ubuntu服务器设置httpProxy</a>
     </h1>
   
 
@@ -196,24 +197,19 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+        <h1 id="需求">需求</h1>
+<pre><code>在现网部署环境中经常遇到有些服务器只有内网地址无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下可以通过设置<span class="keyword">http</span>代理，通过有外网访问能力的服务器来安装软件包。
+</code></pre><h1 id="要求">要求</h1>
+<pre><code><span class="input"><span class="prompt">&gt; 1台可访问外网的服务器，我们称为A服务器
+&gt;</span> <span class="number">1</span>台只有内网地址的服务器，我们称为<span class="constant">B</span>服务器</span>
+&gt; 本文设置只针对通过<span class="constant">APT</span>方式安装
+</code></pre><h1 id="安装步骤">安装步骤</h1>
+<h2 id="A服务器安装http代理服务器（tinyproxy）">A服务器安装http代理服务器（tinyproxy）</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">sudo</span> apt-get tinyproxy</div><div class="line">$ <span class="built_in">sudo</span> vi /etc/tinyproxy.conf</div><div class="line"> //找到Allow <span class="number">127.0</span>.<span class="number">0.1</span> ，将地址改为B服务器的网段如：<span class="number">10.0</span>.<span class="number">1.1</span>/<span class="number">24</span></div><div class="line">$ <span class="built_in">sudo</span> /etc/init.d/tinyproxy start</div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<h2 id="B服务器设置http代理">B服务器设置http代理</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">export</span> http_proxy=<span class="string">"http://A_IP:8888"</span> //<span class="number">8888</span>为默认端口</div><div class="line">$ <span class="built_in">sudo</span> <span class="built_in">echo</span> <span class="string">'Acquire::http::proxy "http://A_IP:8888/";'</span> &gt; /etc/apt/apt.conf</div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
       
     </div>
@@ -223,63 +219,15 @@ Quick">
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2015/01/19/ubuntu-http-proxy/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          ubuntu服务器设置httpProxy
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
 </article>
 
 
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
 
 
 
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hello-world" data-title="Hello World" data-url="http://missall.github.io/2014/12/25/hello-world/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"missall"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
 
-
-
+  
+  
 
       <footer id="footer">
   <div class="outer">
