@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ubuntu服务器设置httpProxy | Joe&#39;s Blog</title>
+  <title>apt-get通过httpProxy跳板服务器安装软件包 | Joe&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="需求
 在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。
@@ -15,7 +15,7 @@
 A服务器安装http代理服务器（tinyproxy）
 1234$">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu服务器设置httpProxy">
+<meta property="og:title" content="apt-get通过httpProxy跳板服务器安装软件包">
 <meta property="og:url" content="http://missall.github.io/2015/01/19/ubuntu-http-proxy/">
 <meta property="og:site_name" content="Joe's Blog">
 <meta property="og:description" content="需求
@@ -28,7 +28,7 @@ A服务器安装http代理服务器（tinyproxy）
 A服务器安装http代理服务器（tinyproxy）
 1234$">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ubuntu服务器设置httpProxy">
+<meta name="twitter:title" content="apt-get通过httpProxy跳板服务器安装软件包">
 <meta name="twitter:description" content="需求
 在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。
 要求
@@ -138,7 +138,7 @@ A服务器安装http代理服务器（tinyproxy）
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud">
-						<a href="/tags/hahahah/" style="font-size: 10.00px;">hahahah</a><a href="/tags/ubuntu-httpProxy/" style="font-size: 20.00px;">ubuntu httpProxy</a><a href="/tags/生活、工作/" style="font-size: 10.00px;">生活、工作</a>
+						<a href="/tags/hahahah/" style="font-size: 10.00px;">hahahah</a><a href="/tags/ubuntu-httpProxy/" style="font-size: 10.00px;">ubuntu httpProxy</a><a href="/tags/ubuntu-httpProxy-tinyProxy/" style="font-size: 20.00px;">ubuntu httpProxy tinyProxy</a><a href="/tags/生活、工作/" style="font-size: 10.00px;">生活、工作</a>
 					</div>
 				</section>
 				
@@ -214,7 +214,7 @@ A服务器安装http代理服务器（tinyproxy）
   </div>
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu-httpProxy/">ubuntu httpProxy</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu-httpProxy-tinyProxy/">ubuntu httpProxy tinyProxy</a></li></ul>
 
     </div>
   
@@ -227,7 +227,7 @@ A服务器安装http代理服务器（tinyproxy）
         
   
     <h1 class="article-title" itemprop="name">
-      ubuntu服务器设置httpProxy
+      apt-get通过httpProxy跳板服务器安装软件包
     </h1>
   
 
@@ -249,7 +249,7 @@ A服务器安装http代理服务器（tinyproxy）
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">export</span> http_proxy=<span class="string">"http://A_IP:8888"</span> //<span class="number">8888</span>为默认端口</div><div class="line">$ <span class="built_in">sudo</span> <span class="built_in">echo</span> <span class="string">'Acquire::http::proxy "http://A_IP:8888/";'</span> &gt; /etc/apt/apt.conf</div></pre></td></tr></table></figure>
 
 <h2 id="相关链接">相关链接</h2>
-<p><a href="https://banu.com/tinyproxy/" target="_blank" rel="external">tinyproxy</a></p>
+<p><a href="https://banu.com/tinyproxy/" target="_blank" rel="external">tinyproxy</a><br><a href="http://baike.baidu.com/link?url=IUuqee_zI52gZBv8kXYYF4t0LLlaVdP7jw_xmJdV6EqV0aAoFty9tF1unYX2TerIkkU4dBkdio4RmaPSGW0vtq" target="_blank" rel="external">apt-get 百度百科</a></p>
 
       
     </div>
@@ -283,7 +283,7 @@ A服务器安装http代理服务器（tinyproxy）
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="ubuntu-http-proxy" data-title="ubuntu服务器设置httpProxy" data-url="http://missall.github.io/2015/01/19/ubuntu-http-proxy/"></div>
+	<div class="ds-thread" data-thread-key="ubuntu-http-proxy" data-title="apt-get通过httpProxy跳板服务器安装软件包" data-url="http://missall.github.io/2015/01/19/ubuntu-http-proxy/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
