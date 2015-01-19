@@ -9,11 +9,11 @@
 在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。
 要求
 
-1台可访问外网的服务器，我们称为A服务器1台只有内网地址的服务器，我们称为B服务器本文设置只针对通过APT方式安装
+1、1台可访问外网的服务器，我们称为A服务器2、1台只有内网地址的服务器，我们称为B服务器3、本文设置只针对通过APT方式安装
 
 安装步骤
 A服务器安装http代理服务器（tinyproxy）
-1234$ sudo a">
+1234$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu服务器设置httpProxy">
 <meta property="og:url" content="http://missall.github.io/2015/01/19/ubuntu-http-proxy/">
@@ -22,22 +22,22 @@ A服务器安装http代理服务器（tinyproxy）
 在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。
 要求
 
-1台可访问外网的服务器，我们称为A服务器1台只有内网地址的服务器，我们称为B服务器本文设置只针对通过APT方式安装
+1、1台可访问外网的服务器，我们称为A服务器2、1台只有内网地址的服务器，我们称为B服务器3、本文设置只针对通过APT方式安装
 
 安装步骤
 A服务器安装http代理服务器（tinyproxy）
-1234$ sudo a">
+1234$">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu服务器设置httpProxy">
 <meta name="twitter:description" content="需求
 在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。
 要求
 
-1台可访问外网的服务器，我们称为A服务器1台只有内网地址的服务器，我们称为B服务器本文设置只针对通过APT方式安装
+1、1台可访问外网的服务器，我们称为A服务器2、1台只有内网地址的服务器，我们称为B服务器3、本文设置只针对通过APT方式安装
 
 安装步骤
 A服务器安装http代理服务器（tinyproxy）
-1234$ sudo a">
+1234$">
 
   
     <link rel="alternative" href="/atom.xml" title="Joe&#39;s Blog" type="application/atom+xml">
@@ -194,7 +194,7 @@ A服务器安装http代理服务器（tinyproxy）
   
     <div class="article-meta">
       <a href="/2015/01/19/ubuntu-http-proxy/" class="article-date">
-  	<time datetime="2015-01-19T07:55:43.000Z" itemprop="datePublished">Jan 19 2015</time>
+  	<time datetime="2015-01-19T08:04:51.000Z" itemprop="datePublished">Jan 19 2015</time>
 </a>
       
       
@@ -223,7 +223,7 @@ A服务器安装http代理服务器（tinyproxy）
 <p>在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给安装基础应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。</p>
 <h1 id="要求">要求</h1>
 <blockquote>
-<p>1台可访问外网的服务器，我们称为A服务器<br>1台只有内网地址的服务器，我们称为B服务器<br>本文设置只针对通过APT方式安装</p>
+<p>1、1台可访问外网的服务器，我们称为A服务器<br>2、1台只有内网地址的服务器，我们称为B服务器<br>3、本文设置只针对通过APT方式安装</p>
 </blockquote>
 <h1 id="安装步骤">安装步骤</h1>
 <h2 id="A服务器安装http代理服务器（tinyproxy）">A服务器安装http代理服务器（tinyproxy）</h2>
@@ -232,6 +232,8 @@ A服务器安装http代理服务器（tinyproxy）
 <h2 id="B服务器设置http代理">B服务器设置http代理</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">export</span> http_proxy=<span class="string">"http://A_IP:8888"</span> //<span class="number">8888</span>为默认端口</div><div class="line">$ <span class="built_in">sudo</span> <span class="built_in">echo</span> <span class="string">'Acquire::http::proxy "http://A_IP:8888/";'</span> &gt; /etc/apt/apt.conf</div></pre></td></tr></table></figure>
 
+<h2 id="相关链接">相关链接</h2>
+<p><a href="https://banu.com/tinyproxy/" target="_blank" rel="external">tinyproxy</a></p>
 
       
     </div>
