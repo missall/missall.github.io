@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Category: 编程 | Joe&#39;s Blog</title>
+  <title>Archives: 2016/11 | Joe&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Joe's Blog">
-<meta property="og:url" content="http://missall.github.io/categories/编程/">
+<meta property="og:url" content="http://missall.github.io/archives/2016/11/">
 <meta property="og:site_name" content="Joe's Blog">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -179,6 +179,40 @@
 	</div>
 </nav>
       
+  
+    <article id="post-sh-work-bstar" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/18/sh-work-bstar/" class="article-date">
+  	<time datetime="2016-11-18T08:12:44.000Z" itemprop="datePublished">11月 18 2016</time>
+</a>
+      
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-vim-better" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -355,161 +389,6 @@
 <p>然后，你要去学习了解寄存器，插件已经其它的功能。学习vim就像学钢琴一样，所有的都要掌握好。</p>
 <h1 id="相关链接">相关链接</h1>
 <p><a href="http://www.vim.org/" target="_blank" rel="external">vim</a><br><a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank" rel="external">Learn Vim Progressively</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-mac-install-docker" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/01/27/mac-install-docker/" class="article-date">
-  	<time datetime="2015-01-27T07:50:00.000Z" itemprop="datePublished">1月 27 2015</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-  </div>
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Virtualbox/">Virtualbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/27/mac-install-docker/">在MacOS下安装Docker环境</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="安装">安装</h1>
-<p>Docker暂时并不支持原生的Mac系统，所以Mac下的Docker实际上是依赖一个很小的linux虚拟机来实现的。</p>
-<h2 id="安装Virtualbox">安装Virtualbox</h2>
-<p>Vagrant依赖现有的虚拟机软件来管理虚拟机，如Virtualbox, Vmware Fusion, Parallel Desktop等，其中最方便的是VirtualBox，所以我选择了<a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">Virtualbox</a>，下载后直接安装即可。</p>
-<h2 id="安装Boot2Docker">安装Boot2Docker</h2>
-<p><a href="https://github.com/boot2docker/boot2docker" target="_blank" rel="external">Boot2Docker</a>是帮助控制虚拟机中Docker的工具，它会下载一个安装好docker的虚拟机，并控制其实现docker功能。<br>在mac下安装boot2docker执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install boot2docker</div></pre></td></tr></table></figure>
-
-<h2 id="安装Docker_Client">安装Docker Client</h2>
-<p>要想在mac下直接执行docker命令，需要安装一个适合mac的docker client，安装方法如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Get the docker client file</span></div><div class="line">DIR=$(mktemp <span class="operator">-d</span> <span class="variable">${TMPDIR:-/tmp}</span>/dockerdl.XXXXXXX) && \</div><div class="line">curl <span class="operator">-f</span> -o <span class="variable">$DIR</span>/ld.tgz https://get.docker.io/builds/Darwin/x86_64/docker-latest.tgz && \</div><div class="line">gunzip <span class="variable">$DIR</span>/ld.tgz && \</div><div class="line">tar xvf <span class="variable">$DIR</span>/ld.tar -C <span class="variable">$DIR</span>/ && \</div><div class="line">cp <span class="variable">$DIR</span>/usr/local/bin/docker ./docker</div><div class="line"></div><div class="line"><span class="comment"># Set the environment variable for the docker daemon</span></div><div class="line"><span class="keyword">export</span> DOCKER_HOST=tcp://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">4243</span></div><div class="line"></div><div class="line"><span class="comment"># Copy the executable file</span></div><div class="line"><span class="built_in">sudo</span> cp docker /usr/local/bin/</div></pre></td></tr></table></figure>
-
-<h1 id="使用">使用</h1>
-<p>使用docker安装需要先启动boot2docker虚拟机</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Initiate the VM</span></div><div class="line">boot2docker init</div><div class="line"></div><div class="line"><span class="comment"># Run the VM (the docker daemon)</span></div><div class="line">boot2docker up</div><div class="line"></div><div class="line"><span class="comment"># To see all available commands:</span></div><div class="line">boot2docker</div></pre></td></tr></table></figure>
-
-<p>之后就可以使用docker命令了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker version</div></pre></td></tr></table></figure>
-
-<h1 id="参考">参考</h1>
-<p><a href="http://docs.docker.io/en/latest/installation/mac/" target="_blank" rel="external">How To Install Docker On Mac OS X</a><br><a href="https://github.com/boot2docker/boot2docker" target="_blank" rel="external">boot2docker</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-ubuntu-http-proxy" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/01/19/ubuntu-http-proxy/" class="article-date">
-  	<time datetime="2015-01-19T05:50:00.000Z" itemprop="datePublished">1月 19 2015</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-  </div>
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/httpProxy/">httpProxy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tinyProxy/">tinyProxy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/19/ubuntu-http-proxy/">apt-get通过httpProxy跳板服务器安装软件包</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="需求">需求</h1>
-<p>在现网部署环境中经常遇到某些服务器只配置了内网地址而无法访问外网的情况，给部署应用环境带来诸多不便，这种情况下我们可以通过设置http代理指向有外网访问的服务器来安装软件包。</p>
-<h1 id="要求">要求</h1>
-<blockquote>
-<p>1、1台可访问外网的服务器，我们称为A服务器<br>2、1台只有内网地址的服务器，我们称为B服务器<br>3、本文设置只针对通过APT方式安装</p>
-</blockquote>
-<h1 id="安装步骤">安装步骤</h1>
-<h2 id="A服务器安装http代理服务器（tinyproxy）">A服务器安装http代理服务器（tinyproxy）</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">sudo</span> apt-get tinyproxy</div><div class="line">$ <span class="built_in">sudo</span> vi /etc/tinyproxy.conf</div><div class="line"> //找到Allow <span class="number">127.0</span>.<span class="number">0.1</span> ，将地址改为B服务器的网段如：<span class="number">10.0</span>.<span class="number">1.1</span>/<span class="number">24</span></div><div class="line">$ <span class="built_in">sudo</span> /etc/init.d/tinyproxy start</div></pre></td></tr></table></figure>
-
-<h2 id="B服务器设置http代理">B服务器设置http代理</h2>
-<h3 id="方法一:">方法一:</h3>
-<p>这是一种临时的手段，如果您仅仅是暂时需要通过 http 代理使用 apt-get，您可以使用这种方式。 在使用 apt-get 之前，在终端中输入以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">export</span> http_proxy= <span class="string">"http://yourproxyaddress:proxyport"</span></div></pre></td></tr></table></figure>
-
-<h3 id="方法二:">方法二:</h3>
-<p>这种方法要用到/etc/apt/文件夹下的 apt.conf 文件。如果您希望只有 apt-get(而不是其他应用程序)一直使用 http 代理，您可以使用这种方式。 注意：某些情况下，系统安装过程中没有建立 apt 配置文件。下面的 操作将视情况修改现有的配置文件或者新建配置文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">sudo</span> vi /etc/apt/apt.conf //打开apt.conf配置文件</div></pre></td></tr></table></figure>
-
-<p>在apt.conf 文件中加入下面这行： </p>
-<blockquote>
-<p>Acquire::http::Proxy “<a href="http://yourproxyaddress:proxyport”" target="_blank" rel="external">http://yourproxyaddress:proxyport”</a>;</p>
-</blockquote>
-<p>保存 apt.conf 文件。</p>
-<h3 id="方法三：">方法三：</h3>
-<p>这种方法会在您的主目录下的.bashrc 文件中添加两行。如果您希望 apt-get 和其他应用程序如 wget 等都使用 http 代理， 您可以使用这种方式。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vi ~/.bashrc  //打开.bashrc 文件</div></pre></td></tr></table></figure>
-
-<p>在.bashrc 文件末尾添加如下内容： (注意：替换成自己的代理地址和端口号) </p>
-<blockquote>
-<p>http_proxy=<a href="http://yourproxyaddress:proxyport" target="_blank" rel="external">http://yourproxyaddress:proxyport</a> export http_proxy </p>
-</blockquote>
-<h2 id="相关链接">相关链接</h2>
-<p><a href="https://banu.com/tinyproxy/" target="_blank" rel="external">tinyproxy</a><br><a href="http://baike.baidu.com/link?url=IUuqee_zI52gZBv8kXYYF4t0LLlaVdP7jw_xmJdV6EqV0aAoFty9tF1unYX2TerIkkU4dBkdio4RmaPSGW0vtq" target="_blank" rel="external">apt-get 百度百科</a></p>
 
       
     </div>

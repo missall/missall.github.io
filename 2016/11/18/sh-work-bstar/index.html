@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: mac | Joe&#39;s Blog</title>
+  <title>Joe&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Joe's Blog">
-<meta property="og:url" content="http://missall.github.io/tags/mac/">
+<meta property="og:url" content="http://missall.github.io/2016/11/18/sh-work-bstar/">
 <meta property="og:site_name" content="Joe's Blog">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -178,22 +178,14 @@
 		</header>				
 	</div>
 </nav>
-      
-  
-    <article id="post-mac-install-docker" class="article article-type-post" itemscope itemprop="blogPost">
+      <article id="post-sh-work-bstar" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/01/27/mac-install-docker/" class="article-date">
-  	<time datetime="2015-01-27T07:50:00.000Z" itemprop="datePublished">1月 27 2015</time>
+      <a href="/2016/11/18/sh-work-bstar/" class="article-date">
+  	<time datetime="2016-11-18T08:12:44.000Z" itemprop="datePublished">11月 18 2016</time>
 </a>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-  </div>
-
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Virtualbox/">Virtualbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
-
     </div>
   
   <div class="article-inner">
@@ -201,40 +193,9 @@
       <input type="hidden" class="isFancy" />
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/27/mac-install-docker/">在MacOS下安装Docker环境</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="安装">安装</h1>
-<p>Docker暂时并不支持原生的Mac系统，所以Mac下的Docker实际上是依赖一个很小的linux虚拟机来实现的。</p>
-<h2 id="安装Virtualbox">安装Virtualbox</h2>
-<p>Vagrant依赖现有的虚拟机软件来管理虚拟机，如Virtualbox, Vmware Fusion, Parallel Desktop等，其中最方便的是VirtualBox，所以我选择了<a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">Virtualbox</a>，下载后直接安装即可。</p>
-<h2 id="安装Boot2Docker">安装Boot2Docker</h2>
-<p><a href="https://github.com/boot2docker/boot2docker" target="_blank" rel="external">Boot2Docker</a>是帮助控制虚拟机中Docker的工具，它会下载一个安装好docker的虚拟机，并控制其实现docker功能。<br>在mac下安装boot2docker执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install boot2docker</div></pre></td></tr></table></figure>
-
-<h2 id="安装Docker_Client">安装Docker Client</h2>
-<p>要想在mac下直接执行docker命令，需要安装一个适合mac的docker client，安装方法如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Get the docker client file</span></div><div class="line">DIR=$(mktemp <span class="operator">-d</span> <span class="variable">${TMPDIR:-/tmp}</span>/dockerdl.XXXXXXX) && \</div><div class="line">curl <span class="operator">-f</span> -o <span class="variable">$DIR</span>/ld.tgz https://get.docker.io/builds/Darwin/x86_64/docker-latest.tgz && \</div><div class="line">gunzip <span class="variable">$DIR</span>/ld.tgz && \</div><div class="line">tar xvf <span class="variable">$DIR</span>/ld.tar -C <span class="variable">$DIR</span>/ && \</div><div class="line">cp <span class="variable">$DIR</span>/usr/local/bin/docker ./docker</div><div class="line"></div><div class="line"><span class="comment"># Set the environment variable for the docker daemon</span></div><div class="line"><span class="keyword">export</span> DOCKER_HOST=tcp://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">4243</span></div><div class="line"></div><div class="line"><span class="comment"># Copy the executable file</span></div><div class="line"><span class="built_in">sudo</span> cp docker /usr/local/bin/</div></pre></td></tr></table></figure>
-
-<h1 id="使用">使用</h1>
-<p>使用docker安装需要先启动boot2docker虚拟机</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Initiate the VM</span></div><div class="line">boot2docker init</div><div class="line"></div><div class="line"><span class="comment"># Run the VM (the docker daemon)</span></div><div class="line">boot2docker up</div><div class="line"></div><div class="line"><span class="comment"># To see all available commands:</span></div><div class="line">boot2docker</div></pre></td></tr></table></figure>
-
-<p>之后就可以使用docker命令了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker version</div></pre></td></tr></table></figure>
-
-<h1 id="参考">参考</h1>
-<p><a href="http://docs.docker.io/en/latest/installation/mac/" target="_blank" rel="external">How To Install Docker On Mac OS X</a><br><a href="https://github.com/boot2docker/boot2docker" target="_blank" rel="external">boot2docker</a></p>
-
+        
       
     </div>
     <footer class="article-footer">
@@ -243,15 +204,59 @@
     </footer>
   </div>
   
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/18/vim-better/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vim修炼攻略</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="sh-work-bstar" data-title="" data-url="http://missall.github.io/2016/11/18/sh-work-bstar/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"missall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-  
-  
+
+
 
       <footer id="footer">
   <div class="outer">
