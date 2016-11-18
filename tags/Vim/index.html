@@ -277,7 +277,7 @@
 <blockquote>
 <p><code>NG</code> → 跳到第N行<br><code>gg</code> → 是1G的快捷方式 - 跳到文件的开始<br><code>G</code> → 跳到最后一行<br>单词间移动:</p>
 <blockquote>
-<p><code>w</code> → 跳到下一个单词的开头,<br><code>e</code> → 跳到这个单词的末尾.<br>默认，单词是有字母和下划线组成。这里我们所谓的单词就是由空格分隔的。如果你只想考虑单词，就使用大写的字符吧:<br><code>W</code> → 跳到下一个单词的开头,<br><code>E</code> → 跳到这个单词的末尾.<br><img src="http://static.oschina.net/uploads/img/201308/19135039_AdpL.jpg" alt="img"></p>
+<p><code>w</code> → 跳到下一个单词的开头,<br><code>e</code> → 跳到这个单词的末尾.<br>默认，单词是有字母和下划线组成。这里我们所谓的单词就是由空格分隔的。如果你只想考虑单词，就使用大写的字符吧:<br><code>W</code> → 跳到下一个单词的开头,<br><code>E</code> → 跳到这个单词的末尾.<br><img src="http://yannesposito.com/Scratch/img/blog/Learn-Vim-Progressively/word_moves.jpg" alt="img"></p>
 </blockquote>
 </blockquote>
 <p>现在，我们谈论最高效率的光标移动：</p>
@@ -298,7 +298,7 @@
 <p>使用上述的命令，是否觉得很爽了。但是现在，这里才是杀手锏。正因为其中有些特性，我才使用vim的。</p>
 <p><strong>在当前行移动:0^$g_fFtT,;</strong></p>
 <blockquote>
-<p><code>0</code> → 跳到第一列<br><code>^</code> → 跳到当前行的第一个字符<br><code>$</code> → 跳到最后一列<br><code>g_</code> → 跳到这行的最后一个字符<br><code>fa</code> → 跳到这行a字母的下一个出现的地方。（对比 ; ）会查找下一个（上一个）地方<br><code>t,</code> → 跳到，字符的前一个字符.<br><code>3fa</code> → 在这行中查找a出现的第三个位置.<br><code>F和T</code> → 与f和t相似， 但是方向相反.<br><img src="http://static.oschina.net/uploads/img/201308/19135039_vFzT.jpg" alt="img"></p>
+<p><code>0</code> → 跳到第一列<br><code>^</code> → 跳到当前行的第一个字符<br><code>$</code> → 跳到最后一列<br><code>g_</code> → 跳到这行的最后一个字符<br><code>fa</code> → 跳到这行a字母的下一个出现的地方。（对比 ; ）会查找下一个（上一个）地方<br><code>t,</code> → 跳到，字符的前一个字符.<br><code>3fa</code> → 在这行中查找a出现的第三个位置.<br><code>F和T</code> → 与f和t相似， 但是方向相反.<br><img src="http://yannesposito.com/Scratch/img/blog/Learn-Vim-Progressively/line_moves.jpg" alt="img"></p>
 </blockquote>
 <p><em>还有一个有用的命令是：<code>dt&quot;</code>→删除所有的的内容，直到遇到双引号<code>”</code>。</em></p>
 <p><strong>区域选择 ：</strong></p>
@@ -314,16 +314,16 @@
 </blockquote>
 <p>假设现在光标在 (map (+) (“foo”)) 这个字符串的第一个o上。</p>
 <blockquote>
-<p><code>vi&quot;</code> → 将会选择 foo<br><code>va&quot;</code> → “foo”<br><code>vi)</code> → “foo”<br><code>va)</code> → (“foo”)<br><code>v2i)</code> → map (+) (“foo”)<br><code>v2a)</code> → (map (+) (“foo”))<br><img src="http://static.oschina.net/uploads/img/201308/19135040_FZZt.png" alt="img"></p>
+<p><code>vi&quot;</code> → 将会选择 foo<br><code>va&quot;</code> → “foo”<br><code>vi)</code> → “foo”<br><code>va)</code> → (“foo”)<br><code>v2i)</code> → map (+) (“foo”)<br><code>v2a)</code> → (map (+) (“foo”))<br><img src="http://yannesposito.com/Scratch/img/blog/Learn-Vim-Progressively/textobjects.png" alt="img"></p>
 </blockquote>
 <p><strong>块操作:<c-v></c-v></strong></p>
 <p>矩形选择块能够方便的对多行代码进行注释， 如<code>:0&lt;C-v&gt;&lt;C-d&gt;I-- [ESC]</code></p>
 <blockquote>
-<p><code>^</code> → 将光标定位到这行第一个非空格字符<br><code>&lt;C-v&gt;</code> → 选择开始位置<br><code>&lt;C-d&gt;</code> → 向下移动 (也可使用 jjj 或者 % ， 其他…)<br><code>I-- [ESC]</code> → 用 — 来注释每一行<br><img src="http://static.oschina.net/uploads/img/201308/19135040_1Cyy.gif" alt="img"></p>
+<p><code>^</code> → 将光标定位到这行第一个非空格字符<br><code>&lt;C-v&gt;</code> → 选择开始位置<br><code>&lt;C-d&gt;</code> → 向下移动 (也可使用 jjj 或者 % ， 其他…)<br><code>I-- [ESC]</code> → 用 — 来注释每一行<br><img src="http://yannesposito.com/Scratch/img/blog/Learn-Vim-Progressively/rectangular-blocks.gif" alt="img"></p>
 </blockquote>
 <p><em>提示：如果你的剪贴板在Windows中是非空的话，那么你就不得不使用<c-q>来代替<c-v>。</c-v></c-q></em></p>
 <p><strong>自动提示:<code>&lt;C-n&gt;</code>和<code>&lt;C-p&gt;</code></strong></p>
-<p>在插入模式中：只要打出单词的首字母，然后按<c-p>，神奇的事情就发生了…<br><img src="http://static.oschina.net/uploads/img/201308/19135042_T1fu.gif" alt="img"></c-p></p>
+<p>在插入模式中：只要打出单词的首字母，然后按<c-p>，神奇的事情就发生了…<br><img src="http://yannesposito.com/Scratch/img/blog/Learn-Vim-Progressively/completion.gif" alt="img"></c-p></p>
 <p><strong>宏命令 : qa 做的一些事,@a,@@</strong></p>
 <blockquote>
 <p><code>qa</code>把你的动作记录在了寄存器<code>a</code>中。<br>然后<code>@a</code>就会将存在寄存器中的动作重现，就好像你从新打了一边。<br><code>@@</code>是将你最后一次执行的宏命令再次执行的快捷键。</p>
@@ -332,22 +332,22 @@
 <blockquote>
 <p><code>qaYp&lt;C-a&gt;q</code> →</p>
 <blockquote>
-<p><code>qa</code>开始记录。<br><code>Yp</code>记录这一行。<br><code>&lt;C-a&gt;</code>增加数字大小。<br><code>q</code>停止记录。<br><code>@a</code> → 在1下面写2<br><code>@@</code> → 在2下面写3<br>现在键入<code>100@@</code>就将会产生一个到103的自增列。<br><img src="http://static.oschina.net/uploads/img/201308/19135042_jJUW.gif" alt="img"></p>
+<p><code>qa</code>开始记录。<br><code>Yp</code>记录这一行。<br><code>&lt;C-a&gt;</code>增加数字大小。<br><code>q</code>停止记录。<br><code>@a</code> → 在1下面写2<br><code>@@</code> → 在2下面写3<br>现在键入<code>100@@</code>就将会产生一个到103的自增列。<br><img src="http://yannesposito.com/Scratch/img/blog/Learn-Vim-Progressively/macros.gif" alt="img"></p>
 </blockquote>
 </blockquote>
 <p><strong>可视化模式选择： v, V, <code>&lt;C-v&gt;</code></strong></p>
 <p>我们已经看到过<c-v>例子，这里还有v和V。一旦已经选择好了，你可以：</c-v></p>
 <blockquote>
-<p><code>J</code> → 让所有行连接在一起<br><code>&lt;(对比&gt;)</code>  → 向左（右）对齐.<br><code>=</code> → 自动对齐<br><img src="http://static.oschina.net/uploads/img/201308/19135043_Npsr.gif" alt="img"></p>
+<p><code>J</code> → 让所有行连接在一起<br><code>&lt;(对比&gt;)</code>  → 向左（右）对齐.<br><code>=</code> → 自动对齐<br><img src="http://yannesposito.com/Scratch/img/blog/Learn-Vim-Progressively/autoindent.gif" alt="img"></p>
 </blockquote>
 <p>在可视化模式所选择的行的末尾添加一些东西：</p>
 <blockquote>
-<p><code>&lt;C-v&gt;</code><br>跳到目的行 (<code>jjj</code>或者 <code>&lt;C-d&gt;</code>或者 <code>/patternor</code>或者<code>%</code>等等…)<br>$跳到行末尾<br><code>A</code>, 写入一些文本，[按] <code>ESC</code>键.<br><img src="http://static.oschina.net/uploads/img/201308/19135046_NfIl.gif" alt="img"></p>
+<p><code>&lt;C-v&gt;</code><br>跳到目的行 (<code>jjj</code>或者 <code>&lt;C-d&gt;</code>或者 <code>/patternor</code>或者<code>%</code>等等…)<br>$跳到行末尾<br><code>A</code>, 写入一些文本，[按] <code>ESC</code>键.<br><img src="http://yannesposito.com/Scratch/img/blog/Learn-Vim-Progressively/append-to-many-lines.gif" alt="img"></p>
 </blockquote>
 <p><strong>分割：split和vsplit</strong></p>
 <p>这些是很重要的命令，所以你应该在:help split看看。</p>
 <blockquote>
-<p><code>:split</code> → 创建一个水平分割窗口t (:vsplit 创建一个竖直分割窗口)<br><code>&lt;C-w&gt;&lt;dir&gt;</code>:  dir是<code>hjklor←↓↑→</code>中任何一个。用来切换分割窗口。<br><code>&lt;C-w&gt;_</code>(对比<code>&lt;C-w&gt;|</code>) : 用来最大化水平（竖直）分割窗口的大小<br><code>&lt;C-w&gt;+</code>(对比<code>&lt;C-w&gt;-</code>) : 增加 (减小) 分割窗口<br><img src="http://static.oschina.net/uploads/img/201308/19135046_ivZR.gif" alt="img"></p>
+<p><code>:split</code> → 创建一个水平分割窗口t (:vsplit 创建一个竖直分割窗口)<br><code>&lt;C-w&gt;&lt;dir&gt;</code>:  dir是<code>hjklor←↓↑→</code>中任何一个。用来切换分割窗口。<br><code>&lt;C-w&gt;_</code>(对比<code>&lt;C-w&gt;|</code>) : 用来最大化水平（竖直）分割窗口的大小<br><code>&lt;C-w&gt;+</code>(对比<code>&lt;C-w&gt;-</code>) : 增加 (减小) 分割窗口<br><img src="http://yannesposito.com/Scratch/img/blog/Learn-Vim-Progressively/split.gif" alt="img"></p>
 </blockquote>
 <h1 id="小结">小结</h1>
 <p>这些是我经常使用的90%的命令。我建议你每天学习一到两个命令。在两到三周之后，你将会感觉到vim在你手上使用的是如此的强大。</p>
